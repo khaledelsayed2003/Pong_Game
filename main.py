@@ -22,7 +22,7 @@ screen.onkey(fun= paddle_left.move_down, key="s")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.05)
+    time.sleep(0.1)
     screen.update()
     ball.move_up_right()
     
@@ -38,6 +38,16 @@ while game_is_on:
     #Detect collision with paddle_left
     if ball.distance(paddle_left) < 50 and ball.xcor() < -330:
         ball.bounce_x()    
+        
+    #Detect when the Ball goes out of the bounds (paddle_right)
+    if ball.xcor() > 380:
+        ball.reset_position()
+    #Detect when the Ball goes out of the bounds (paddle_left)
+    if ball.xcor() < -380:
+        ball.reset_position()
+        
+
+
     
 
         
